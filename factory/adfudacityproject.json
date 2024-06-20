@@ -1,0 +1,9 @@
+{
+	"name": "adfudacityproject",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "242ca571-8001-4b5a-9ad1-0c207b037c6b",
+		"tenantId": "f958e84a-92b8-439f-a62d-4f45996b6d07"
+	}
+}

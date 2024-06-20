@@ -1,0 +1,37 @@
+{
+	"name": "ds_lake_TitleMaster",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_nycpayroll",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Data Lake"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "TitleMaster.csv",
+				"folderPath": "dirpayrollfiles",
+				"fileSystem": "adlsnycpayroll-thanh-nguyen"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "TitleCode",
+				"type": "String"
+			},
+			{
+				"name": "TitleDescription",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,46 @@
+{
+	"name": "dataflow_agency",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_lake_AgencyMaster",
+						"type": "DatasetReference"
+					},
+					"name": "sourcedatalakeagency"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_NYC_Payroll_AGENCY_MD",
+						"type": "DatasetReference"
+					},
+					"name": "sinksqldbagency"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          AgencyID as string,",
+				"          AgencyName as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> sourcedatalakeagency",
+				"sourcedatalakeagency sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sinksqldbagency"
+			]
+		}
+	}
+}
